@@ -5,6 +5,9 @@ public class Main {
         Database database = new Database("c_210042174", "cse4308");
         DatabaseManager databaseManager = new DatabaseManager(database);
         databaseManager.decreaseBudget();
-        //databaseManager.getTopNStudents();
+        databaseManager.getInstructorsBySchedule();
+        databaseManager.getTopNStudents();
+        databaseManager.insertStudent();
+        databaseManager.assignAdvisorsToStudents();
     }
 }
