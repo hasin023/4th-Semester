@@ -5,24 +5,33 @@
 #include <iomanip>
 using namespace std;
 
-void bubbleSort(int arr[], int n)
+void countingSort(int arr[], int size, int maxVal)
 {
-    for (int i = 0; i < n - 1; i++)
+    int count[maxVal + 1] = {0};
+
+    for (int i = 0; i < size; i++)
     {
-        bool swapped = false;
-
-        for (int j = 0; j < n - i - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                swap(arr[j], arr[j + 1]);
-                swapped = true;
-            }
-        }
-
-        if (!swapped)
-            break;
+        count[arr[i]]++;
     }
+
+    int index = 0;
+    for (int i = 0; i <= maxVal; i++)
+    {
+        while (count[i] > 0)
+        {
+            arr[index++] = i;
+            count[i]--;
+        }
+    }
+}
+
+void printArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()
@@ -43,17 +52,24 @@ int main()
 
     cout << "Sorting the array..." << endl;
 
+    int maxVal = arr[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] > maxVal)
+        {
+            maxVal = arr[i];
+        }
+    }
+
     auto start = chrono::high_resolution_clock::now();
-    bubbleSort(arr, n);
+    countingSort(arr, n, maxVal);
     auto end = chrono::high_resolution_clock::now();
 
     chrono::duration<double> duration = end - start;
 
-    cout << "Sorted array : ";
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    cout << "Sorted array: ";
+    printArray(arr, n);
 
     cout << endl;
     cout << "Time taken : " << fixed << setprecision(10) << duration.count() << " seconds" << endl;
