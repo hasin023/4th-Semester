@@ -1,0 +1,119 @@
+-- @"/media/hasin023/New Volume/DOCS/IUT/4th_Sem/cse_4410_dbms_2/Lab06/210042174_L06Task.sql"
+
+SET SERVEROUTPUT ON;
+
+-- Task 1 --
+CREATE SEQUENCE ID_SEQ
+MINVALUE 1
+MAXVALUE 9999
+START WITH 1
+INCREMENT BY 1
+CACHE 10;
+
+CREATE OR REPLACE TRIGGER STUDENT_ID_GENERATOR BEFORE
+    INSERT ON STUDENT FOR EACH ROW
+BEGIN
+    :NEW.ID := ID_SEQ.NEXTVAL;
+END;
+/
+
+CREATE OR REPLACE FUNCTION GENERATE_SID(
+    P_DEPT_NAME IN VARCHAR2
+) RETURN VARCHAR2 IS
+    DEPT_SERIAL    VARCHAR2(10);
+    REMAING_SERIAL VARCHAR2(10);
+    G_SID          VARCHAR2(10);
+BEGIN
+    IF P_DEPT_NAME = 'Biology' THEN
+        DEPT_SERIAL := '1';
+    ELSIF P_DEPT_NAME = 'Comp. Sci.' THEN
+        DEPT_SERIAL := '2';
+    ELSIF P_DEPT_NAME = 'Elec. Eng.' THEN
+        DEPT_SERIAL := '3';
+    ELSIF P_DEPT_NAME = 'Finance' THEN
+        DEPT_SERIAL := '4';
+    ELSIF P_DEPT_NAME = 'History' THEN
+        DEPT_SERIAL := '5';
+    ELSIF P_DEPT_NAME = 'Music' THEN
+        DEPT_SERIAL := '6';
+    ELSIF P_DEPT_NAME = 'Physics' THEN
+        DEPT_SERIAL := '7';
+    END IF;
+
+    SELECT
+        TO_CHAR(ID_SEQ.NEXTVAL, 'FM0000') INTO REMAING_SERIAL
+    FROM
+        DUAL;
+    G_SID := DEPT_SERIAL
+             || REMAING_SERIAL;
+    RETURN G_SID;
+END GENERATE_SID;
+/
+
+CREATE OR REPLACE PROCEDURE INSERT_NEW_STUDENT AS
+    NEW_DEPT_NAME VARCHAR2(50);
+    NEW_SID       VARCHAR2(10);
+BEGIN
+    NEW_DEPT_NAME := 'Comp. Sci.';
+    NEW_SID := GENERATE_SID(NEW_DEPT_NAME);
+ -- Insert
+    INSERT INTO STUDENT(
+        ID,
+        NAME,
+        DEPT_NAME,
+        TOT_CRED
+    ) VALUES (
+        NEW_SID,
+        'Hasin Alvee',
+        NEW_DEPT_NAME,
+        0
+    );
+    DBMS_OUTPUT.PUT_LINE('New student inserted successfully.');
+END INSERT_NEW_STUDENT;
+/
+
+BEGIN
+    INSERT_NEW_STUDENT;
+END;
+/
+
+-- select ID from student where name = 'Hasin Alvee' and dept_name = 'Comp. Sci.';
+
+-- Task 2 --
+CREATE OR REPLACE PROCEDURE UPDATE_ALL_STUDENT_ID IS
+BEGIN
+    UPDATE STUDENT
+    SET
+        ID = GENERATE_SID(
+            DEPT_NAME
+        );
+    DBMS_OUTPUT.PUT_LINE('All student ID updated successfully.');
+END UPDATE_ALL_STUDENT_ID;
+/
+
+BEGIN
+    UPDATE_ALL_STUDENT_ID;
+END;
+/
+
+-- Task 3 --
+CREATE OR REPLACE TRIGGER GENERATE_NEW_STUDENT_ID BEFORE
+    INSERT ON STUDENT FOR EACH ROW
+BEGIN
+    :NEW.ID := ID_SEQ.NEXTVAL;
+    DBMS_OUTPUT.PUT_LINE('New student ID generated successfully.');
+END;
+/
+
+-- Task 4 --
+CREATE OR REPLACE TRIGGER UPDATE_TOTAL_CREDIT AFTER
+    INSERT ON TAKES FOR EACH ROW
+BEGIN
+    UPDATE STUDENT
+    SET
+        TOT_CRED = TOT_CRED + :NEW.CREDITS
+    WHERE
+        ID = :NEW.STUDENT_ID;
+    DBMS_OUTPUT.PUT_LINE('Total credit updated successfully.');
+END;
+/
