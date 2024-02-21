@@ -108,12 +108,25 @@ END;
 -- Task 4 --
 CREATE OR REPLACE TRIGGER UPDATE_TOTAL_CREDIT AFTER
     INSERT ON TAKES FOR EACH ROW
+DECLARE
+    V_COURSE_CREDITS NUMBER;
 BEGIN
-    UPDATE STUDENT
-    SET
-        TOT_CRED = TOT_CRED + :NEW.CREDITS
-    WHERE
-        ID = :NEW.STUDENT_ID;
+    IF INSERTING THEN
+        SELECT
+            CREDITS INTO V_COURSE_CREDITS
+        FROM
+            COURSE
+        WHERE
+            COURSE_ID = :NEW.COURSE_ID;
+        UPDATE STUDENT
+        SET
+            TOT_CRED = TOT_CRED + V_COURSE_CREDITS
+        WHERE
+            ID = :NEW.ID;
+    END IF;
+
     DBMS_OUTPUT.PUT_LINE('Total credit updated successfully.');
 END;
 /
+
+-- Task 5 --
