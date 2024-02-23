@@ -1,0 +1,179 @@
+\documentclass[11.5pt]{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xcolor}
+
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12}
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}
+
+\hypersetup { colorlinks, linkcolor=Violet, urlcolor=Cyan}
+
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\colorlet{LightGreen}{Green!15}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\setstretch{1.2}
+\geometry{
+	textheight=9in,
+	textwidth=5.5in,
+	top=1in,
+	headheight=12pt,
+	headsep=25pt,
+	footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+	
+	\pagenumbering{gobble}
+	
+	
+	\title{\includegraphics[height=4.5cm]{IUT_logo}
+		\normalsize \textsc{}
+		\\ [1.5cm]
+		\HRule{1.5pt} \\
+		
+		
+		
+		\LARGE \textbf{\uppercase{IUT-Medical Management System} "ProjectNAME"
+			\HRule{1.5pt} \\ [1.3cm] \LARGE{SWE 4404 \\ Software Project Lab II} \vspace*{1\baselineskip}}
+	}
+	
+	\date{\LARGE\today}
+	
+	\author{\HRule{1.5pt} \\
+		\\
+		\\\Large\textbf{{Ahmed Alfey Sani} [210042129]}\\
+		\Large\textbf{{Shefayat E - Shams Adib} [210042141]}\\
+		\Large\textbf{{Hasin Mahtab Alvee} [210042174]}\\
+		\\
+		\Large\textbf{Supervisor: Imtiaz Ahmed Chowdhury}
+		\\
+		\\
+		\LARGE Department of CSE \\
+		\LARGE B.Sc in Software Engineering
+	}
+	
+	
+	\maketitle
+	\newpage
+	\tableofcontents
+	\newpage
+	\pagenumbering{arabic}
+	% ------------------------------------------------------------------------------
+	
+	\section{Project Overview}
+	
+	IUT-Medical Management System is a comprehensive solution designed to streamline operations and enhance patient care within the Islamic University of Technology's medical center. It offers features such as appointment scheduling, medical expense management, room reservations, prescription generation for doctors, and availability tracking for doctors.\newline
+	
+	Patients can conveniently book appointments, manage medical expenses, and access digital prescriptions, while hospital staff can efficiently manage resources and schedules. With automated reminders, real-time availability updates, and secure communication channels, the platform aims to improve the patient experience, optimize resource utilization, and enable data-driven decision-making for enhanced operational efficiency and quality of care.
+	
+	
+	%\section{Motivation behind the Project}
+
+	
+	% ------------------------------------------------------------------------------
+	
+	% ------------------------------------------------------------------------------
+	
+	
+	%\section{Flow chart/ Class diagram}
+
+	% ------------------------------------------------------------------------------
+	
+	% ------------------------------------------------------------------------------
+	
+	
+	\section{Key Features}
+	
+	
+	\subsection{Appointment Scheduler}
+	
+	Patients can conveniently book appointments with healthcare providers through an intuitive online scheduler. The system provides real-time availability of doctors, allowing patients to select preferred time slots based on their convenience.
+	
+	
+	\subsection{Due Medical Expense Management}
+	
+	The platform facilitates seamless management of medical expenses for patients, allowing them to view and settle outstanding bills online. A medical assistant can clear and check the dues, and on confirmation from the doctor, he/she can update the dues of the students.
+	
+	
+	\subsection{Room Reservation}
+	
+	 Hospital staff can efficiently manage room reservations for patients, including inpatient rooms, consultation rooms, and procedure rooms. The system provides a visual overview of room availability, enabling staff to allocate resources effectively and minimize scheduling conflicts.
+	 
+	\subsection{Prescription Generator for Doctors}
+	 
+	Healthcare providers can generate digital prescriptions for patients directly within the platform.
+	 
+	\subsection{Availability Calendar of Doctors}
+	 
+	Hospital staff can efficiently manage room reservations for patients, including inpatient rooms, consultation rooms, and procedure rooms. The system provides a visual overview of room availability, enabling staff to allocate resources effectively and minimize scheduling conflicts
+	
+	
+	% ------------------------------------------------------------------------------
+	
+	% ------------------------------------------------------------------------------
+	
+	\section{Tools and Technology}
+	
+	\subsection{Frontend}
+	We will be using \textbf{ReactJS} as the primary Javascript framework for our frontend technology along with TailwindCSS for styling the client side.
+	
+	\subsection{Backend}
+	We will be using \textbf{NodeJS} and \textbf{ExpressJS} as the primary server-side language to develop the routes and connecting the server with the database.
+	
+	\subsection{Database}
+	We will be using \textbf{PostgreSQL} as the primary database to store all the necessary data for the project.
+	
+	\subsection{Integrated Development Environment:}
+	\textbf{Visual Studio Code} is chosen as the suitable development environment to write, test, and debug our code efficiently.
+	
+	\subsection{Version Control}
+	Using \textbf{Git} to track changes in our code, collaborate with team members, and maintain a version history.
+
+	
+	\subsection{Documentation Tools}
+	\textbf{Google Docs} or \textbf {LaTeX}  used for project documentation.
+	
+	% ------------------------------------------------------------------------------
+	
+	% ------------------------------------------------------------------------------
+	
+	
+	\section{Proposed Timeline}
+	\begin{itemize}
+		\item Week 1-2: Problem analysis and Requirements gathering
+		\item Week 3-4: System Architecture and Proposal finalization
+		\item Week 5-6: Organizing Data into database and Utility Methods
+		\item Week 7-8: Development of Backend servers and routes
+		\item Week 9-10: Implement the medical center features for routes
+		\item Week 11-12: Development of Frontend client side UI
+		\item Week 13: Integration and Testing
+		\item Week 14: Bug fixes and Final Review
+	\end{itemize}
+	
+	% ------------------------------------------------------------------------------
+	
+	% ------------------------------------------------------------------------------
+	
+\end{document}
