@@ -1,16 +1,20 @@
 \babel@toc {english}{}\relax 
 \contentsline {section}{\numberline {1}Project Overview}{1}{section.1}%
-\contentsline {section}{\numberline {2}Key Features}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Appointment Scheduler}{1}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Due Medical Expense Management}{1}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Room Reservation}{1}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Prescription Generator for Doctors}{1}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Availability Calendar of Doctors}{1}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Tools and Technology}{2}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Frontend}{2}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Backend}{2}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Database}{2}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Integrated Development Environment:}{2}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Version Control}{2}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Documentation Tools}{2}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Proposed Timeline}{2}{section.4}%
+\contentsline {section}{\numberline {2}Motivation behind the Project}{1}{section.2}%
+\contentsline {section}{\numberline {3}Key Features}{1}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Appointment Scheduler}{1}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Service Reservations}{1}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Generate Prescription}{1}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Provide and Apply for Referrals}{1}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Manage Medical Records}{1}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Staff Scheduler}{2}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Due Medical Expense Management}{2}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Tools and Technology}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Frontend}{2}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Backend}{2}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Database}{2}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Integrated Development Environment:}{2}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Version Control}{2}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Documentation Tools}{2}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Application Domain}{3}{section.5}%
+\contentsline {section}{\numberline {6}Proposed Timeline}{3}{section.6}%

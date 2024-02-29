@@ -1,4 +1,4 @@
--- @"/media/hasin023/New Volume/DOCS/IUT/4th_Sem/cse_4410_dbms_2/Lab06/210042174_L06Task.sql"
+-- @"/media/hasin023/Trixx/DOCS/IUT/4th_Sem/cse_4410_dbms_2/Lab06/210042174_L06Task.sql"
 
 SET SERVEROUTPUT ON;
 
