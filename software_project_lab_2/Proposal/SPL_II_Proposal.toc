@@ -2,13 +2,12 @@
 \contentsline {section}{\numberline {1}Project Overview}{1}{section.1}%
 \contentsline {section}{\numberline {2}Motivation behind the Project}{1}{section.2}%
 \contentsline {section}{\numberline {3}Key Features}{1}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Appointment Scheduler}{1}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Service Reservations}{1}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Generate Prescription}{1}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Provide and Apply for Referrals}{1}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Manage Medical Records}{1}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.1}Generate Prescription}{1}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Manage Medical Records}{1}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Due Medical Expense Management}{1}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Appointment Scheduler}{1}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Service Reservations}{2}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Staff Scheduler}{2}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Due Medical Expense Management}{2}{subsection.3.7}%
 \contentsline {section}{\numberline {4}Tools and Technology}{2}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Frontend}{2}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Backend}{2}{subsection.4.2}%
