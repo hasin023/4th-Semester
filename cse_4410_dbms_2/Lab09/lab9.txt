@@ -1,0 +1,225 @@
+# Lab 09
+
+- use Social-Media
+
+-- Create user jsonSchema
+
+- db.createCollection("users", {
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"string"
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+            }
+        }
+    }
+});
+
+-- insert one data
+db.users.insertOne( {
+   name: "Hasin Mahtab",
+   email: "hasin@yahoo.com",
+   password: "asdf"
+});
+
+-- Update the user jsonSchema to add hobbies, bio, work status
+
+- db.runCommand({ collMod: "users",
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"string"
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+                hobbies: {
+                bsonType:"array"
+                },
+                bio: {
+                bsonType:"string"
+                },
+                workStatus: {
+                bsonType:"string"
+                }
+            }
+        }
+    }
+});
+
+-- insert one data
+db.users.insertOne( {
+    name: "Adid al Mahmud",
+    email: "adid@yahoo.com",
+    password: "1111",
+    hobbies: ["debating", "travelling", "movies"],
+    bio: "I live for the Thrill",
+    workStatus: "Student"
+});
+
+
+-- Update the user jsonSchema to change phone number to object
+
+- db.runCommand({ collMod: "users",
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"object",
+                    properties: {
+                        personal: {
+                            bsonType: "string"
+                        },
+                        work: {
+                            bsonType: "string"
+                        }
+                    },
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+                hobbies: {
+                bsonType:"array"
+                },
+                bio: {
+                bsonType:"string"
+                },
+                workStatus: {
+                bsonType:"string"
+                }
+            }
+        }
+    }
+});
+
+-- insert many data
+
+db.users.insertMany([
+    {
+        name: "Nahiyan Kabir",
+        email: "kabir@yahoo.com",
+        password: "kabir123",
+        phoneNumber: {
+            personal: "01711111111",
+            work: "01722222222"
+        },
+        dob: "01-01-1990",
+        address: "Dhaka",
+        hobbies: ["reading", "travelling", "movies"],
+    },
+    {
+        name: "Atik Ovi",
+        email: "atik@yahoo.com",
+        password: "ovi123",
+        phoneNumber: {
+            personal: "01711111111",
+            work: "01722222222"
+        },
+        dob: "01-01-1990",
+        address: "Khulna",
+        hobbies: ["reading", "travelling", "movies"],
+    }
+]);
+
+-- create post jsonSchema
+
+- db.createCollection("posts", {
+    validator: {
+        $jsonSchema: {
+            title: "Post Object Validation",
+            required: ["content"],
+            properties: {
+                content: {
+                bsonType:"string",
+                description: "content is required"
+                }
+            }
+        }
+    }
+});
+
+-- insert many data
+
+db.posts.insertMany([
+    {
+        content: "I am a post 1"
+    },
+    {
+        content: "I am a post 2"
+    },
+    {
+        content: "I am a post 3"
+    },
+    {
+        content: "I am a post 4"
+    },
+]);
+
+-- display total number of posts
+
+db.posts.find().count();
