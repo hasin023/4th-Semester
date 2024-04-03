@@ -1,0 +1,466 @@
+# Lab 09
+
+- use Social-Media
+
+-- Create user jsonSchema
+
+- db.createCollection("users", {
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"string"
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+            }
+        }
+    }
+});
+
+-- insert one data
+db.users.insertOne( {
+   name: "Hasin Mahtab",
+   email: "hasin@yahoo.com",
+   password: "asdf"
+});
+
+-- Update the user jsonSchema to add hobbies, bio, work status
+
+- db.runCommand({ collMod: "users",
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"string"
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+                hobbies: {
+                bsonType:"array"
+                },
+                bio: {
+                bsonType:"string"
+                },
+                workStatus: {
+                bsonType:"string"
+                }
+            }
+        }
+    }
+});
+
+-- insert one data
+db.users.insertOne( {
+    name: "Adid al Mahmud",
+    email: "adid@yahoo.com",
+    password: "1111",
+    hobbies: ["debating", "travelling", "movies"],
+    bio: "I live for the Thrill",
+    workStatus: "Student"
+});
+
+
+-- Update the user jsonSchema to change phone number to object
+
+- db.runCommand({ collMod: "users",
+    validator: {
+        $jsonSchema: {
+            title: "User Object Validation",
+            required: ["name", "password", "email"],
+            properties: {
+                name: {
+                bsonType:"string",
+                description: "name is required"
+                },
+                email: {
+                bsonType:"string",
+                description:"email is required"
+                },
+                password: {
+                bsonType:"string",
+                description:"password is required"
+                },
+                phoneNumber: {
+                bsonType:"object",
+                    properties: {
+                        personal: {
+                            bsonType: "string"
+                        },
+                        work: {
+                            bsonType: "string"
+                        }
+                    },
+                },
+                dob:{
+                bsonType:"string"
+                },
+                address: {
+                bsonType:"string"
+                },
+                createdAt: {
+                bsonType:"string"
+                },
+                hobbies: {
+                bsonType:"array"
+                },
+                bio: {
+                bsonType:"string"
+                },
+                workStatus: {
+                bsonType:"string"
+                }
+            }
+        }
+    }
+});
+
+-- insert many data
+
+db.users.insertMany([
+    {
+        name: "Nahiyan Kabir",
+        email: "kabir@yahoo.com",
+        password: "kabir123",
+        phoneNumber: {
+            personal: "01711111111",
+            work: "01722222222"
+        },
+        dob: "01-01-1990",
+        address: "Dhaka",
+        hobbies: ["reading", "travelling", "movies"],
+    },
+    {
+        name: "Atik Ovi",
+        email: "atik@yahoo.com",
+        password: "ovi123",
+        phoneNumber: {
+            personal: "01711111111",
+            work: "01722222222"
+        },
+        dob: "01-01-1990",
+        address: "Khulna",
+        hobbies: ["reading", "travelling", "movies"],
+    }
+]);
+
+-- create post jsonSchema
+
+- db.createCollection("posts", {
+    validator: {
+        $jsonSchema: {
+            title: "Post Object Validation",
+            required: ["content"],
+            properties: {
+                content: {
+                bsonType:"string",
+                description: "content is required"
+                }
+            }
+        }
+    }
+});
+
+-- insert many data
+
+db.posts.insertMany([
+    {
+        content: "I am a post 1",
+        createdAt: new Date()
+    },
+    {
+        content: "I am a post 2",
+        createdAt: new Date()
+    },
+    {
+        content: "I am a post 3",
+        createdAt: new Date()
+    },
+    {
+        content: "I am a post 4",
+        createdAt: new Date()
+    },
+]);
+
+
+-- Update -> Add multiple followers for multiple users
+
+db.users.updateOne(
+    { _id: ObjectId("6604e600f3bfe493e0d4a592") },
+    { $set: { followers: ["6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595", "6604eaa1f3bfe493e0d4a596", "660d812420e5d625e3e71da4"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604e93ff3bfe493e0d4a594") },
+    { $set: { followers: ["6604e600f3bfe493e0d4a592", "6604eaa1f3bfe493e0d4a595", "6604eaa1f3bfe493e0d4a596"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604eaa1f3bfe493e0d4a595") },
+    { $set: { followers: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a596"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604eaa1f3bfe493e0d4a596") },
+    { $set: { followers: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595"] } }
+);
+
+-- Update -> Add multiple friends for multiple users
+
+db.users.updateOne(
+    { _id: ObjectId("6604e600f3bfe493e0d4a592") },
+    { $set: { friends: ["6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595", "6604eaa1f3bfe493e0d4a596", "660d812420e5d625e3e71da4"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604e93ff3bfe493e0d4a594") },
+    { $set: { friends: ["6604e600f3bfe493e0d4a592", "6604eaa1f3bfe493e0d4a595", "6604eaa1f3bfe493e0d4a596"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604eaa1f3bfe493e0d4a595") },
+    { $set: { friends: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a596"] } }
+);
+
+db.users.updateOne(
+    { _id: ObjectId("6604eaa1f3bfe493e0d4a596") },
+    { $set: { friends: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595"] } }
+);
+
+
+-- Update -> Add multiple users who liked a post
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da0") },
+    { $set: { likes: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595"] } }
+);
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da2") },
+    { $set: { likes: ["6604e600f3bfe493e0d4a592", "6604e93ff3bfe493e0d4a594", "6604eaa1f3bfe493e0d4a595"] } }
+);
+
+
+-- Update -> Add two comments for two posts
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da1") },
+    { $set: { comments: [
+        { commenter: "6604e600f3bfe493e0d4a592", comment: "Nice post" },
+        { commenter: "6604e93ff3bfe493e0d4a594", comment: "Great post" },
+    ] } }
+);
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da3") },
+    { $set: { comments: [
+        { commenter: "6604eaa1f3bfe493e0d4a595", comment: "Nice post" },
+        { commenter: "6604eaa1f3bfe493e0d4a596", comment: "Great post" },
+    ] } }
+);
+
+-- display total number of posts
+
+db.posts.find().count();
+
+-- display the most recent to oldest posts along with their poster(s)
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da3") },
+    { $set: { poster: "6604e600f3bfe493e0d4a592" } }
+);
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da2") },
+    { $set: { poster: "6604e600f3bfe493e0d4a592" } }
+);
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da1") },
+    { $set: { poster: "6604eaa1f3bfe493e0d4a595" } }
+);
+
+db.posts.updateOne(
+    { _id: ObjectId("660d6f8c20e5d625e3e71da0") },
+    { $set: { poster: "6604e93ff3bfe493e0d4a594" } }
+);
+
+db.posts.aggregate([
+  {
+    $addFields: {
+      poster: { $toObjectId: "$poster" }
+    }
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "poster",
+      foreignField: "_id",
+      as: "posterDetails"
+    }
+  },
+  { $unwind: "$posterDetails" },
+  { $sort: { "createdAt": -1 } },
+  { $project: { content: 1, createdAt: 1, "posterDetails.name": 1 } }
+]);
+
+-- all post created yesterday - 2nd April
+
+db.posts.find({
+  createdAt: {
+    $gte: new Date("2024-04-02T00:00:00.000Z"),
+    $lt: new Date("2024-04-03T00:00:00.000Z")
+  }
+}).sort({ createdAt: -1 });
+
+
+-- Users who are following more than 3 users.
+
+db.users.find({
+  $expr: {
+    $gt: [{ $size: "$followers" }, 3]
+  }
+});
+
+
+-- Users who were born within 1990-2000.
+
+db.users.find({
+  dob: {
+    $gte: "1990-01-01",
+    $lt: "2000-01-01"
+  }
+});
+
+
+-- Profiles that were created the earliest
+
+db.users.aggregate([
+  { $sort: { createdAt: 1 } },
+  { $project: { name: 1, createdAt: 1 } }
+]);
+
+
+-- Show all the posts where commenter "Hasin Mahtab" commented
+
+db.posts.aggregate([
+  {
+    $unwind: "$comments"
+  },
+  {
+    $addFields: {
+      commenter: { $toObjectId: "$comments.commenter" }
+    }
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "commenter",
+      foreignField: "_id",
+      as: "commenterDetails"
+    }
+  },
+  {
+    $unwind: "$commenterDetails"
+  },
+  {
+    $match: {
+      "commenterDetails.name": "Hasin Mahtab"
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      content: 1,
+      createdAt: 1,
+      commenter: "$commenterDetails.name",
+      "poster": 1
+    }
+  }
+]);
+
+
+-- Show the user’s detail who posted "Life is too good".
+
+db.posts.aggregate([
+  {
+    $match: {
+      content: "Life is too good"
+    }
+  },
+  {
+    $addFields: {
+      poster: { $toObjectId: "$poster" }
+    }
+  },
+  {
+    $lookup: {
+      from: "users",
+      localField: "poster",
+      foreignField: "_id",
+      as: "posterDetails"
+    }
+  },
+  {
+    $unwind: "$posterDetails"
+  },
+  {
+    $project: {
+      _id: 0,
+      content: 1,
+      createdAt: 1,
+      poster: ["$posterDetails.name", "$posterDetails.email", "$posterDetails.bio", "$posterDetails.workStatus", "$posterDetails.hobbies", "$posterDetails.phoneNumber"]
+    }
+  }
+]);
+
+
+-- Delete user who has no work-number
+
+db.users.deleteMany({
+  "phoneNumber.work": {
+    $exists: false
+  }
+});
