@@ -1,0 +1,35 @@
+MLS
+===================
+1. Add PCs, 2960-24TT Switches, 3560-24PS Multilayer Switch for topology
+2. Add wires:
+	PC to Switch: Copper Straigth (fa-fa)
+	Switch to MLS: Copper Straigth (fa-fa)
+2. Add vlans in Switches
+3. Switchport Mode:
+	Switch to PC: Access and vlan 'X'
+	Swicth to MLS: Truck and vlan 'all'
+4. Configure PCs, set ip addresses and default gateways
+5. In MLS:
+	- add vlans
+	- Go to CLI
+# ip routing
+# int range fa0/1-2
+# switchport truck encapsulation dot1q
+# switchport mode trunk
+# no shutdown
+# int vlan 10
+# ip address (default-gateway) (subnet mask)
+# no shutdown
+# exit
+# int vlan 20
+# ip address (default-gateway) (subnet mask)
+# no shutdown
+# exit
+# int vlan 30
+# ip address (default-gateway) (subnet mask)
+# no shutdown
+# exit
+
+		
+DONE!!!
+

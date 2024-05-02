@@ -1,0 +1,107 @@
+OSPF
+============================
+1. Create the topology
+
+2. R1 Config:
+- Interfaces
+	> Giga0/0
+	- port status ON
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/0
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/1
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+
+3. R2 Config:
+- Interfaces
+	> Giga0/0
+	- port status ON
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/0
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/1
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+
+4. R3 Config:
+- Interfaces
+	> Giga0/0
+	- port status ON
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/0
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+	> Se0/0/1
+	- port status ON
+	- clock rate 64000
+	- IP: (default gateway)
+	- Subnet mask
+
+
+
+5. OSPF Config
+	- R1 CLI
+		# en
+		# configure terminal
+		# router ospf 1
+		# network (network id) (wild card mask) area 0
+			172.16.1.16/28  0.0.0.15  area 0
+		# network (network id) (wild card mask) area 0
+			172.16.10.0/30  0.0.0.3  area 0
+		# network (network id) (wild card mask) area 0
+			172.16.10.4/30  0.0.0.3  area 0
+
+	- R2 CLI
+		# en
+		# configure terminal
+		# router ospf 1
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+
+	
+	- R3 CLI
+		# en
+		# configure terminal
+		# router ospf 1
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+		# network (network id) (wild card mask) area 0
+			jegular sathe connected....
+
+	
+6. Configure PCs
+	- add ip address / subnet mask / default gateway
+
+
+DONE!!!
+		
+
+
+
+
+
+
+
+

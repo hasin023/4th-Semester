@@ -1,0 +1,42 @@
+RIP
+================
+1. Create the topology
+2. Router1 config:
+	- Interfaces >
+		Serial 0/0/0 - add ip address + subnet mask
+		Giga0/0 - add ip address + subnet mask
+		Giga0/1 - add ip address + subnet mask
+3. Router2 config:
+	- Interfaces >
+		Serial 0/0/0 - add ip address + subnet mask
+		Giga0/0 - add ip address + subnet mask
+		Giga0/1 - add ip address + subnet mask
+
+4. Router1 RIP
+- Go to CLI
+	# en
+	# configure terminal
+	# router rip
+	# version 2
+	# network (network id/172.67.0.0)
+	# network (network id/172.68.0.0)
+	# network (network id/172.68.0.149)
+
+5. Router2 RIP
+- Go to CLI
+	# en
+	# configure terminal
+	# router rip
+	# version 2
+	# network (network id/172.67.0.0)
+	# network (network id/172.69.0.0)
+	# network (network id/172.69.0.149)
+
+
+6. Configure the PCs
+	- add ip / default gateway / subnet mask
+
+DONE!!!
+
+
+

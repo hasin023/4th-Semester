@@ -1,0 +1,92 @@
+Static Routing
+===========================
+1. Make the Topology
+2. In all 1941 Routers, add a HWIC-2T port.
+3. Wiring:
+	PC to Switch: copper straigth(fa-fa)
+	Switch to Router: copper straigth(fa-gig)
+	Router to Router: Serial DCE (se-se)
+4. In Router 1:
+(router1 to switch1)
+# int g0/0
+# ip address (deafult gateway) (subnet mask)
+# desc connection-to-pc3
+# no shutdown
+# exit
+(router1 to router2)
+# int s0/1/0
+# ip address (default gateway) (subnet mask)
+# desc connection-to-r2
+# clock rate 64000
+# no shutdown
+# exit
+(router1 to router3)
+# int s0/1/1
+# ip address (default gateway) (subnet mask)
+# desc connection-to-r3
+# clock rate 64000
+# no shutdown
+# exit
+ 
+5. In Router 2:
+(router2 to router1)
+# int s0/1/1
+# ip address (default gateway) (subnet mask)
+# desc connection-to-r1
+# clock rate 64000
+# no shutdown
+# exit
+(router2 to switch2)
+# int g0/0
+# ip address (default gateway) (subnet mask)
+# desc connection-to-switch2
+# no shutdown
+# exit
+
+6. In Router 3:
+(router3 to router1)
+# int s0/1/1
+# ip address (default gateway) (subnet mask)
+# desc connection-to-r1
+# clock rate 64000
+# no shutdown
+# exit
+(router3 to switch2)
+# int g0/0
+# ip address (default gateway) (subnet mask)
+# desc connection-to-switch2
+# no shutdown
+# exit
+
+
+7. Router1 (Next hop config):
+	- Go to config
+	- Routing > Static
+	- Network: (destination network)
+	  Mask: (255.255.255.0/subnet mask)
+	  Next Hop: (r2 default gateway)
+		- Add
+	- Network: (destination network)
+	  Mask: (255.255.255.0/subnet mask)
+	  Next Hop: (r3 default gateway)
+		- Add
+	
+8. Router2 (Next hop config)
+
+9. Router3 (Next hop config)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

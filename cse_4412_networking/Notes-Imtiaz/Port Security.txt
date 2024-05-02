@@ -1,0 +1,15 @@
+Port Security
+===================================
+
+1. Set up Router-on-a-stick
+
+2.  CLI:
+# int fa0/1
+# switchport port-security maximum '1'
+# switchport port-security mac-address 'sticky'
+# switchport port-security violation 'restrict'
+
+....same for all other securities
+
+# show port security
+

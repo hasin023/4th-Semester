@@ -113,3 +113,70 @@ RETURN customer, rated, book
 // b ->
 MATCH ()-[rel:FOLLOWS]->()
 RETURN rel
+
+// c ->
+MATCH (:BOOK { title: 'Harry Potter and the Philosophers Stone' })<-[rated:RATED]-(customer:CUSTOMER)
+RETURN avg(rated.rating) AS average_rating
+
+// d ->
+MATCH (book:BOOK)
+RETURN book.title
+ ORDER BY book.price DESC
+SKIP 1
+LIMIT 1
+
+// e ->
+MATCH (customer:CUSTOMER)-[rel:PURCHASED]->(book:BOOK)<-[:WROTE]-(author:AUTHOR)<-[:FOLLOWS]-(customer)
+RETURN customer.name, book.title, book.price, book.price * rel.amount AS total_amount
+
+// f ->
+MATCH (customer:CUSTOMER)-[:RATED]->(:BOOK)<-[:WROTE]-(author:AUTHOR { author_name: 'J.K. Rowling' })
+WITH customer, collect(author.author_name) AS authors
+WHERE 'J.K. Rowling' IN authors
+MATCH (customer)-[:FOLLOWS]->(:AUTHOR { author_name: 'J.K. Rowling' })
+RETURN customer.name
+
+// g ->
+MATCH (:CUSTOMER)-[rated:RATED]->(:BOOK)<-[:WROTE]-(author:AUTHOR)
+WITH author, max(rated.rating_date) AS latest_rating_date
+ ORDER BY latest_rating_date DESC
+LIMIT 1
+RETURN author.author_name
+
+// h ->
+OPTIONAL MATCH (author:AUTHOR)-[:WROTE]->(book:BOOK)
+WHERE book.genre IN ['Mystery', 'Fantasy']
+OPTIONAL MATCH (author)<-[rated:RATED]-()
+WITH author, avg(rated.rating) AS avg_rating
+RETURN author.author_name, avg_rating
+
+// UPDATE
+// a ->
+MATCH (author:AUTHOR { author_name: 'Agatha Christie' })
+ SET author:PLAYWRIGHT
+RETURN author
+
+// b ->
+MATCH (book:BOOK { title: 'The Shining' })
+ SET book.published_year = 1980
+RETURN book
+
+// c ->
+MATCH (:CUSTOMER)-[rating:RATED]->(:BOOK)<-[:WROTE]-(author:AUTHOR)
+ SET rating.star = rating.rating
+REMOVE rating.rating
+RETURN rating
+
+// DELETE
+// a ->
+MATCH (author:AUTHOR { author_name: 'Stephen King' })
+DETACH DELETE author
+
+// b ->
+MATCH (:CUSTOMER)-[follows:FOLLOWS]-(:CUSTOMER)
+DELETE follows
+
+// c ->
+MATCH (:CUSTOMER)-[rating:RATED]->(:BOOK)
+WHERE rating.rating_date < date('2022-01-01')
+DELETE rating
