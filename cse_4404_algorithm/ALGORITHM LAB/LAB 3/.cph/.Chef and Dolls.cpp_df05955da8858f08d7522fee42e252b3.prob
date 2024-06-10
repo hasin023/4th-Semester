@@ -1,0 +1,1 @@
+{"name":"Local: Chef and Dolls","url":"d:\\2.2 LABS\\ALGORITHM LAB\\LAB 3\\Chef and Dolls.cpp","tests":[{"id":1707380602933,"input":"1\n3\n1 \n2\n1","output":""},{"id":1707380610777,"input":"1\n5\n1\n1\n2\n2\n3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\2.2 LABS\\ALGORITHM LAB\\LAB 3\\Chef and Dolls.cpp","group":"local","local":true}

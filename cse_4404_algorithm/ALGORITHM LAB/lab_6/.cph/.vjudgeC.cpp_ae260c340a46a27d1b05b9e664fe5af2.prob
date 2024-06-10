@@ -1,0 +1,1 @@
+{"name":"Local: vjudgeC","url":"d:\\2.2 LABS\\ALGORITHM LAB\\lab_6\\vjudgeC.cpp","tests":[{"id":1711611296417,"input":"8 1 2\n-1 3 -2 5 3 -5 2 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\2.2 LABS\\ALGORITHM LAB\\lab_6\\vjudgeC.cpp","group":"local","local":true}

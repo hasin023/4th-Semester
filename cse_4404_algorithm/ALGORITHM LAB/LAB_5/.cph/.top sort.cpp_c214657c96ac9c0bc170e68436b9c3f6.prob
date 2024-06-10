@@ -1,0 +1,1 @@
+{"name":"Local: top sort","url":"d:\\2.2 LABS\\ALGORITHM LAB\\LAB_5\\top sort.cpp","tests":[{"id":1708579865015,"input":"8 9\n1 4\n1 2\n4 2\n4 3\n3 2\n5 2\n3 5\n8 2\n8 6","output":"1 4 3 5 7 8 2 6"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\2.2 LABS\\ALGORITHM LAB\\LAB_5\\top sort.cpp","group":"local","local":true}
